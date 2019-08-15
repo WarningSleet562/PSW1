@@ -1,4 +1,4 @@
-package parte1;
+package br.edu.udc2_3_1;
 
 import java.util.Scanner;
 
