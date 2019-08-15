@@ -7,6 +7,8 @@ public class Inteiros {
 	int y;
 	int z;
 	int media;
+	int maiorn;
+	int menorn;
 	
 	public Inteiros () {
 		
@@ -30,9 +32,23 @@ public class Inteiros {
 		return media = (x + y + z) / 3;
 	}
 	
-//	public int MaiorNumero (int x, int y, int z) {
-//		
-//	}
+	public int MaiorNumero (int x, int y, int z) {
+		if (x > y && x > z)
+			return maiorn = x;
+		else if (y > z)
+			return maiorn = y;
+		else
+			return maiorn = z;
+	}
+	
+	public int MenorNumero (int x, int y, int z) {
+		if (x < y && x < z)
+			return menorn = x;
+		else if (y < z)
+			return menorn = y;
+		else 
+			return menorn = z;
+	}
 	
 	public void Entrada () {
 		Scanner sc = new Scanner(System.in);
@@ -55,5 +71,11 @@ public class Inteiros {
 		
 		resultado = i.Media(x, y, z);
 		System.out.println("Media: " + resultado);
+		
+		resultado = i.MaiorNumero(x, y, z);
+		System.out.println("Maior número: " + resultado);
+		
+		resultado = i.MenorNumero(x, y, z);
+		System.out.println("Menor número: " + resultado);
 	}
 }
