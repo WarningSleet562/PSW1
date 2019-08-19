@@ -12,8 +12,8 @@ public class Inteiros {
 		num = sc.nextInt();
 		
 		if (num > 9999 && num < 100000) {
-		String str = String.valueOf(num);
-		System.out.println(str.charAt(0) + "   " + str.charAt(1) + "   " + str.charAt(2) + "   " + str.charAt(3) + "   " + str.charAt(4));
+			String str = String.valueOf(num);
+			System.out.println(str.charAt(0) + "   " + str.charAt(1) + "   " + str.charAt(2) + "   " + str.charAt(3) + "   " + str.charAt(4));
 		}
 		else
 			System.out.println("Entre com um número válido!");
