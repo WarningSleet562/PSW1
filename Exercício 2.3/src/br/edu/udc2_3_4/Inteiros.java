@@ -29,7 +29,6 @@ public class Inteiros {
 		System.out.println("Entre com o número desejado: ");
 		int x = sc.nextInt();
 		
-		Inteiros i = new Inteiros ();
-		int resultado = i.ParImpar(x);
+		ParImpar(x);
 	}
 }
