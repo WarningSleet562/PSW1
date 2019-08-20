@@ -39,7 +39,6 @@ public class Triangulo {
 		System.out.println("Entre com o valor do lado C: ");
 		ladoC = sc.nextInt();
 		
-		Triangulo i = new Triangulo();
-		int resultado = i.VerificaTriangulo(ladoA, ladoB, ladoC);
+		VerificaTriangulo(ladoA, ladoB, ladoC);
 	}
 }
