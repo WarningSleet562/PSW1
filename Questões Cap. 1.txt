@@ -1,0 +1,13 @@
+Cap. 1
+
+19. A maioria das classes precisam ser importadas antes de poderem ser utilizadas em um aplicativo.
+Por que nos exemplos foi permitida a utilização das classes System e String sem importá-las
+primeiro?
+	Isso ocorre por que elas estão dentro do pacote "java.lang", que é importado automaticamente, é o único pacote com está característica.
+
+20. Descreva o significado para a declaração de um método estático na linguagem Java.
+	Para os métodos estáticos não é necessário instanciar um objeto para usá-lo, já nos outros casos, a funcionalidade do método só é possível após instanciação, que é a criação de um objeto a partir da sua classe.
+
+
+28. Quais são as diferenças em se declarar uma interface ou uma classe abstract?
+	Uma classe abstrata pode conter métodos completos ou incompletos. Uma Interface pode conter apenas a assinatura de um método, mas nenhum corpo ou implementação. Uma classe abstrata não suporta múltiplas herança. Assim, uma classe pode implementar várias interfaces, mas apenas herdar de uma classe abstrata.
