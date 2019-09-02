@@ -1,0 +1,14 @@
+Cap. 4
+
+Questão 4.1
+
+1. Que tipo de repetição seria apropriada para calcular a soma dos primeiros 100 inteiros positivos?
+	O comando "for" para dar sequência até chegar no número 100.
+2. Que tipo de repetição seria apropriada para calcular a soma de um número arbitrário de inteiros positivos?
+	O comando "while" para verificar se o número é positivo e realizar a soma, assim quando o número digitado for diferente de positivo o programa irá parar.
+3. Descreva brevemente como cada uma dessas tarefas poderia ser realizada.
+	No caso do exercício 1: o processo consistiria em um for começando em 1 indo até 100 e realizando a soma com uma váriavel de "soma".
+	No caso do exercício 2: o processo consistira em verificar se o número que foi definido para a soma é positivo e realizar a soma, caso o número digitado seja menor que 0 o programa não irá mais somar os números.
+4. Qual é a diferença entre pré-incrementar e pós-incrementar uma variável?
+	Pré-incrementar significa somar um valor a uma certa variável e depois disso atribuir a outra, como por exemplo: y = ++x;
+	E o pós-incremento significa fazer a soma após atribuir um valor de certa variável a uma outra, como por exemplo y = x++;
