@@ -1,4 +1,4 @@
-package br.edu.udc4_3_1;
+package br.edu.udc4_4_2;
 
 import java.util.Scanner;
 
@@ -6,11 +6,16 @@ public class TrianguloFloyd {
 	int n, i, j;
 	
 	public void ImprimeTriangulo() {
-		for (i = 1; i <= n; i++) {
-			for (j = 1; j <= i; j++) {
-				System.out.printf ("%d ", i * j);
+		i = 1;
+		
+		while (i <= n) {
+			j = 1;
+			while (j <= i) {
+				System.out.printf(j*i + " ");
+				j++;
 			}
 			System.out.printf("\n");
+			i++;
 		}
 	}
 	
