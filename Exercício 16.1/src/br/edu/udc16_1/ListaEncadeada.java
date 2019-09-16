@@ -29,6 +29,15 @@ public class ListaEncadeada {
 		else return false;
 	}
 	
+	public IteradorAbstrato getIteradorInicio() {
+		Iterador it = new Iterador(inicio);
+		return it;
+	}
+	
+	public IteradorAbstrator getIteradorFim() {
+		return new Iterador(fim);
+	}
+	
 	public boolean inserir(Object obj, int pos) {
 		
 		NoLista n = new NoLista(obj);
