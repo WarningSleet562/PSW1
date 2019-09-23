@@ -14,7 +14,7 @@ public class Peixe extends Animal {
 	}
 	
 	public void setCaracteristica(String caracteristica) {
-		caracteristica = caracteristica;
+		this.caracteristica = caracteristica;
 	}
 	
 	public void ImpressaoPeixe() {
