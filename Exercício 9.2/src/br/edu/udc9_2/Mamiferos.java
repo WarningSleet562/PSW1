@@ -14,7 +14,7 @@ public class Mamiferos extends Animal {
 	}
 	
 	public void setAlimento(String alimento) {
-		this.alimento = alimento;
+		alimento = alimento;
 	}
 	
 	void ImpressaoMamiferos() {
