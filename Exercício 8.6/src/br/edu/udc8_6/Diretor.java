@@ -9,7 +9,7 @@ public class Diretor extends Pessoa {
 	}
 	
 	public void setAno_mandato(String ano_mandato) {
-		ano_mandato = ano_mandato;
+		this.ano_mandato = ano_mandato;
 	}
 
 	@Override

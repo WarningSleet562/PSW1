@@ -9,7 +9,7 @@ public class Professor extends Pessoa {
 	}
 	
 	public void setDisciplina(String disciplina) {
-		disciplina = disciplina;
+		this.disciplina = disciplina;
 	}
 	
 	@Override
