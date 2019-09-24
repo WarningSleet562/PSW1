@@ -1,204 +1,175 @@
 package br.edu.udc16_1;
 
 public class ListaEncadeada {
-	NoLista inicio;
-	NoLista fim;
-	
-	int tamanho;
-	
-	/* Construtores */
-	
+	private NoLista inicio;
+	private NoLista fim;
+
+	private int tamanho;
+
 	public ListaEncadeada() {
 		inicio = null;
 		fim = null;
-		
 		tamanho = 0;
 	}
-	
-	/* Getters e Setters */
-	
+
 	public int getTamanho() {
 		return tamanho;
 	}
-	
-	/* Métodos */
-	
-	public boolean isVazia() {
-		/* Verificação de existência de nós na lista */
-		if (tamanho == 0) return true;
-		else return false;
+
+	public void setTamanho(int tamanho) {
+		this.tamanho = tamanho;
 	}
-	
-	public IteradorAbstrato getIteradorInicio() {
-		Iterador it = new Iterador(inicio);
-		return it;
+
+	public void inserirInicio(Object obj) { // Insere no início
+		NoLista novo = new NoLista();
+		
+		novo.dado = obj;
+		novo.proximo = inicio;
+		novo.anterior = null;
+
+		if (inicio == null) { // Lista vazia
+			inicio = novo;
+			fim = novo;
+		} else { // Novo início
+			inicio.anterior = novo;
+			inicio = novo;
+		}
+		tamanho++;
 	}
-	
-	public IteradorAbstrator getIteradorFim() {
-		return new Iterador(fim);
+
+	public void InserirMeio(Object obj, int pos) { // Insere em qualquer posição
+		if (pos < 1 || pos > tamanho + 1)
+			return;
+
+		NoLista novo = new NoLista();
+		
+		
+		NoLista aux = inicio;
+		int contador = 1;
+
+		novo.dado = obj;
+		novo.proximo = null;
+		novo.anterior = null;
+
+		while (contador < pos) {
+			aux = aux.proximo;
+			contador++;
+		}
+
+		novo.anterior = aux.anterior;
+		novo.proximo = aux;
+
+		aux.anterior.proximo = novo;
+		aux.anterior = novo;
+
+		tamanho++;
 	}
-	
-	public boolean inserir(Object obj, int pos) {
-		
-		NoLista n = new NoLista(obj);
-		
-		/* Primeira inserção */
-		if (tamanho == 0) {
-			
-			inicio = n;
-			fim = n;
-			
-			tamanho++;
-			return true;
-		}
-		
-		/* Inserção no início da lista, parâmetro pos negativo ou zero */
-		else if (pos <= 0) {
-			
-			n.proximo = inicio;
-			inicio.anterior = n;
-			inicio = n;
-			
-			tamanho++;
-			return true;
-		}
-		
-		/* Inserção no fim da lista, parâmetro pos superior ou igual ao tamanho */
-		else if (pos >= tamanho) {
-			
-			n.anterior = fim;
-			fim.proximo = n;
-			fim = n;
-			
-			tamanho++;
-			return true;
-		}
-		
-		/* Inserção na posição desejada */
-		else if(tamanho > pos && pos > 0) {
-			
-			NoLista it = inicio;
-			
-			for (int i = 0; i < pos; i++) 
-				it = it.proximo;
-			
-			n.proximo = it;
-			n.anterior = it.anterior;
-			it.anterior.proximo = n;
-			it.anterior = n;
-			
-			tamanho++;
-			return true;
-		}
-		
-		else return false;
+
+	public void inserirFim(Object obj) { // Insere no fim
+		NoLista novo = new NoLista();
+
+		novo.dado = obj;
+		novo.proximo = null;
+		novo.anterior = fim;
+
+		if (fim != null)// Insere no fim;
+			fim.proximo = novo;
+
+		fim = novo;
+
+		if (inicio == null) // Lista vazia
+			inicio = novo;
+
+		tamanho++;
 	}
-	
-	public boolean remover(Object obj) {
-		
-		/* Remover em lista vazia */
-		if (tamanho == 0)
-			return false;
-		
-		/* Busca pela posição do objeto específico */
-		else {
-			NoLista it = inicio;
-			boolean flag = false; /* Variável para controle da remoção */
-			
-			for (int i = 0; i < tamanho; i++) {
-				
-				if (obj.equals(it.obj)) {
-					
-					/* Remoção em lista unitária */
-					if (tamanho == 1) {
-						inicio = null;
-						fim = null;
-					}
-					
-					/* Remoção do primeiro elemento */
-					else if (it == inicio) {
-						inicio = inicio.proximo;
-						inicio.anterior = null;
-					}
-					
-					/* Remoção do último elemento */
-					else if (it == fim) {
-						fim = fim.anterior;
-						fim.proximo = null;
-					}
-					
-					/* Remoção específica */
-					else {
-						it.proximo.anterior = it.anterior;
-						it.anterior.proximo = it.proximo;
-					}
-					
-					tamanho--;
-					flag = true;
-				}
-			
-				it = it.proximo;
-			}
-		}
-		return flag;
-	}
-	
-	public boolean remover(int pos) {
-		
-		/* Remoção em lista vazia */
-		if (tamanho == 0)
-			return false;
-		
-		/* Remoção em lista unitária */
-		else if (tamanho == 1 && pos <= 0) {
+
+	public void remover(int pos) { // Remove item por posição
+
+		if(tamanho == 1 && pos == 0) { // Remover o único elemento da lista
 			inicio = null;
 			fim = null;
-			
 			tamanho--;
-			return true;
+			return;
 		}
 		
-		/* Remoção do primeiro elemento */
-		else if (pos <= 0) {
+		if(pos == 0) { // Remover o início
 			inicio = inicio.proximo;
 			inicio.anterior = null;
-			
 			tamanho--;
-			return true;
+			return;
 		}
 		
-		/* Remoção do último elemento */
-		else if (pos >= tamanho-1) {
+		if(pos == tamanho-1) { // Remover o último elemento
 			fim = fim.anterior;
 			fim.proximo = null;
-			
 			tamanho--;
-			return true;
+			return;
 		}
 		
-		/* Busca pela posição específica */
-		else if (pos < tamanho-1 && pos > 0) {
-			NoLista it = inicio;
-			
-			for (int i = 0; i < pos; i++)
-				it = it.proximo;
-			
-			it.proximo.anterior = it.anterior;
-			it.anterior.proximo = it.proximo;
-			
-			tamanho--;
-			return true;
-		}
+		if(pos > 1 && pos <tamanho-1) {
 		
-		else return false;
+		NoLista iterador = inicio;
+		int contador = 1;
+
+		while (contador < pos) {
+			iterador = iterador.proximo;
+			contador++;
+		}
+
+		iterador.anterior.proximo = iterador.proximo;
+		iterador.proximo.anterior = iterador.anterior;
+		tamanho--;
+		}
 	}
-	
+
+	public boolean remover(Object obj) {
+		
+		NoLista iterador = inicio;
+		boolean removido = false;
+
+		while (iterador != null) {
+			
+			if(iterador.dado.equals(obj)) {
+				if(tamanho == 1) { // Único elemento
+					inicio = null;
+					fim = null;
+				}
+				else if(iterador == inicio) { // Primeiro elemento
+					inicio = inicio.proximo;
+					inicio.anterior = null;
+				}
+				else if(iterador == fim) { // Último elemento
+					fim = fim.anterior;
+					fim.proximo = null;
+				}
+				else {
+					iterador.anterior.proximo = iterador.proximo;
+					iterador.proximo.anterior = iterador.anterior;
+				}
+				removido = true;
+				tamanho --;
+		}
+			iterador = iterador.proximo;
+	}
+		return removido;	
+}
+
 	public Object pesquisar(int pos) {
-		NoLista it = inicio;
-		
-		for (int i = 0; i < pos; i++)
-			it = it.proximo;
-		
-		return it.obj;
+		NoLista auxiliar = inicio;
+		int cont = 1;
+
+		if (tamanho == 0)
+			return null;
+
+		if (pos > tamanho)
+			return null;
+
+		while (cont < pos) {
+			auxiliar = auxiliar.proximo;
+			cont++;
+		}
+
+		return auxiliar.dado;
 	}
+
 }

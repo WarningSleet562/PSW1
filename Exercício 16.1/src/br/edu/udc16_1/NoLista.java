@@ -3,25 +3,18 @@ package br.edu.udc16_1;
 public class NoLista {
 	NoLista proximo;
 	NoLista anterior;
-	Object obj;
+	Object dado;
 	
-	/* Construtores */
-	
-	NoLista(){
+	NoLista() { //Visibilidade apenas no pacote
 		this.proximo = null;
 		this.anterior = null;
-		this.obj = null;
+		this.dado = null;
 	}
 	
-	NoLista(Object obj){
-		this.proximo = null;
-		this.anterior = null;
-		this.obj = null;
-	}
-	
-	NoLista(NoLista proximo, NoLista anterior, Object obj){
+	NoLista(NoLista proximo, NoLista anterior, Object obj) {
 		this.proximo = proximo;
 		this.anterior = anterior;
-		this.obj = obj;
+		this.dado = obj;
 	}
+	
 }
