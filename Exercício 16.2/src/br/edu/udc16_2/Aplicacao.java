@@ -21,7 +21,9 @@ public class Aplicacao {
 			
 		System.out.println("Pesquisa" + lista.pesquisar(2));
 		lista.remover(2);
-
+		
+		System.out.println();
+		
 		System.out.println("Tamanho Lista: " + lista.getTamanho());
 		for (int i = 1; i <= lista.getTamanho(); i++) {
 			System.out.println(i + " - " + lista.pesquisar(i));
