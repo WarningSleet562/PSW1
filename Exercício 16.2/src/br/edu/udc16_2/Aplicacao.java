@@ -2,7 +2,7 @@ package br.edu.udc16_2;
 
 import br.edu.udc16_2.Iterador;
 import br.edu.udc16_2.ListaEncadeada;
-import br.edu.udc7_1_1.Ponto2D;
+import br.edu.udc7_1.Ponto2D;
 
 public class Aplicacao {
 	
