@@ -14,6 +14,8 @@ public class TesteData {
 		data.setAno(2007);
 		data.mostrarData();
 		
+		System.out.println();
+		
 		data2.mostrarData();
 	}
 }

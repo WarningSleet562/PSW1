@@ -12,6 +12,9 @@ public class TesteHora {
 		hora.setSegundos(45);
 		System.out.print(hora.mostraHoraAproximada());
 		
+		System.out.println();
+		System.out.println();
+		
 		Hora hora2 = new Hora();
 		System.out.print(hora2.mostraHoraAproximada());	
 	}

@@ -99,6 +99,6 @@ public class Hora {
 	
 	
 	public String mostraHoraAproximada() {
-		return "HoraAproximada Hora:" + hora + ", Minutos:" + minutos + ", Segundos:" + segundos + "";
+		return "Hora Aproximada\nHora:" + hora + "\nMinutos:" + minutos + "\nSegundos:" + segundos + "";
 	}
 }
