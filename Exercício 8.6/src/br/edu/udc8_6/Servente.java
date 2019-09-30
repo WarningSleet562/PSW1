@@ -14,6 +14,6 @@ public class Servente extends Pessoa {
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Servente setor: " + setor;
+		return super.toString() + "Servente setor:" + setor;
 	}
 }

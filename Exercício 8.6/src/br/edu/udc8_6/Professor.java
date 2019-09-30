@@ -14,6 +14,6 @@ public class Professor extends Pessoa {
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Professor disciplina: " + disciplina;
+		return super.toString() + "Professor disciplina:" + disciplina;
 	}
 }
