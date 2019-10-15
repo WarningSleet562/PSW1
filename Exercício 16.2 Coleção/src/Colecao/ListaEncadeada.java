@@ -72,31 +72,42 @@ public class ListaEncadeada<E> implements Iterable<E> {
 
 	private class IteradorJava implements Iterator<E> {
 		private NoLista noAtual;
+		private NoLista noAnterior;
 
 		IteradorJava(NoLista no) {
 			noAtual = no;
+			noAnterior = new NoLista();
+			noAnterior.proximo = noAtual;
 		}
 
 		@Override
 		public boolean hasNext(){
-			if(noAtual == null)
+			if(noAtual.proximo == null)
 				return false;
 
-			noAtual = noAtual.proximo;
 			return true;
 		}
 
 		@Override
 		public E next(){
-			if(noAtual == null)
+			if(noAtual.proximo == null)
 				return null;
-
+			
+			noAnterior = noAtual;
+			noAtual = noAtual.proximo;
 			return noAtual.obj;
 		}
 
 		@Override
 		public void remove(){
-
+			if(noAtual != null) {
+				noAnterior.proximo = noAtual.proximo;
+				
+				noAtual.proximo.anterior = noAtual.anterior;
+				noAtual.anterior.proximo = noAtual.proximo;
+				
+				noAtual = null;
+			}
 		}
 
 	}
