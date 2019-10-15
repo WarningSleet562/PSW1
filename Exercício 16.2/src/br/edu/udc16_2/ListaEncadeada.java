@@ -1,7 +1,5 @@
 package br.edu.udc16_2;
 
-import br.edu.udc16_2.ListaEncadeada.IteradorConcreto;
-
 public class ListaEncadeada {
 	
 	public class IteradorConcreto implements Iterador {

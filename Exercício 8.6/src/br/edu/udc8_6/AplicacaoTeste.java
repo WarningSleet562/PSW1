@@ -51,7 +51,7 @@ public class AplicacaoTeste {
 			
 			System.out.println("Entre com o nome: ");
 			F.setNome(sc.next());
-			System.out.println("Entre com o setor: ");
+			System.out.println("Entre com o ano de mandato: ");
 			F.setAno_mandato(sc.next());
 			System.out.println(F.toString());
 		}

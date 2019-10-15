@@ -23,6 +23,6 @@ public class Aluno extends Pessoa {
 	
 	@Override
 	public String toString() {
-		return super.toString() + "Aluno curso: " + curso + ", série: " + serie;
+		return super.toString() + "Aluno curso:" + curso + ", série:" + serie;
 	}
 }

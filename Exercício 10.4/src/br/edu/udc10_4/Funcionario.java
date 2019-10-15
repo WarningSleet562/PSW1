@@ -79,8 +79,8 @@ public class Funcionario {
 
 	@Override
 	public String toString() {
-		return "\nFuncionario: \nnome: " + nome + ", \nsobrenome: " + sobrenome + ", \ndepartamento: " + departamento
-				+ ", \ndata_admissao: " + data_admissao + ", \nRG: " + RG + ", \nCPF: " + CPF + ", \nsalario: " + salario;
+		return "\nFuncionario: \nNome: " + nome + " \nSobrenome: " + sobrenome + " \nDepartamento: " + departamento
+				+ " \nData de Admissão: " + data_admissao + " \nRG: " + RG + " \nCPF: " + CPF + " \nSalário: " + salario;
 	}
 	
 	public void RecebeAumento(double percentual) {

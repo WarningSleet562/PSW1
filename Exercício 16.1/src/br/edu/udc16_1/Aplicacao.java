@@ -1,6 +1,6 @@
 package br.edu.udc16_1;
 import br.edu.udc16_1.ListaEncadeada;
-import edu.udc7_1_1.Ponto2D;
+import br.edu.udc7_1.Ponto2D;
 
 public class Aplicacao {
 
