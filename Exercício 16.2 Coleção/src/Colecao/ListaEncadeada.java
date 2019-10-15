@@ -90,14 +90,21 @@ public class ListaEncadeada<E> implements Iterable<E> {
 
 		@Override
 		public E next(){
-			if(noAtual.proximo == null)
+			if(noAtual.proximo == null) {
+				if (noAnterior.proximo == null)
 				return null;
 			
+				else 
+					noAtual = noAnterior.proximo;
+			}
+			
+			else {
 			noAnterior = noAtual;
 			noAtual = noAtual.proximo;
+			}
+			
 			return noAtual.obj;
 		}
-
 		@Override
 		public void remove(){
 			if(noAtual != null) {
