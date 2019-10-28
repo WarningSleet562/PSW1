@@ -30,7 +30,16 @@ public class MouseFrame extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent event) {
-				status.setText(String.format("Mouse foi \"clicado\" no ponto (%d; %d)", event.getX(), event.getY()));
+				String detalhe;
+				
+				if (event.isMetaDown()) //Botão direito do mouse
+					detalhe = "com o botão direito";
+				if (event.isAltDown()) //Botão do meio do mouse
+					detalhe = "com o botão do meio";
+				else //Botão esquerdo do mouse
+					detalhe = "com o botão esquerdo";
+				
+				status.setText(String.format("Mouse foi \"clicado\" no ponto (%d; %d) %s", event.getX(), event.getY(), detalhe));
 				
 			}
 
