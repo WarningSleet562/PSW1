@@ -27,7 +27,7 @@ public class MouseFrame extends JFrame{
 	private int originX, originY;
 	private int radiusX, radiusY;
 	private int pontoAX, pontoAY, pontoBX, pontoBY, pontoCX, pontoCY;
-	private int cliquesTriangulo;
+	private int cliquesTriangulo = 3;
 	
 	/* Getters and Setters */
 	
@@ -65,7 +65,7 @@ public class MouseFrame extends JFrame{
 	
 	/* Construtor */
 	
-	public MouseFrame() {
+	MouseFrame() {
 		super("Tratamento dos eventos de mouse");
 		
 		setSize(750, 750);
@@ -112,6 +112,7 @@ public class MouseFrame extends JFrame{
 		
 		mousePanel = new Painel();
 		add(mousePanel, BorderLayout.CENTER);
+		
 		mousePanel.addMouseListener(new MouseListener(){
 
 			@Override
@@ -120,29 +121,74 @@ public class MouseFrame extends JFrame{
 				if(mousePanel.getOpcao() == 3){
 					mousePanel.setPoint(arg0.getX(), arg0.getY());
 				
+					mousePanel.repaint();	
+					
 					message = String.format("Ponto na posição [%d; %d]", arg0.getX(), arg0.getY());
 					status.setText(message);
 				}
+				
 				/* Informações do triangulo */
 				if(mousePanel.getOpcao() == 6){
 					if (cliquesTriangulo == 3){
 						pontoAX = arg0.getX();
 						pontoAY = arg0.getY();
+						pontoBX = arg0.getX();
+						pontoBY = arg0.getY();
+						pontoCX = arg0.getX();
+						pontoCY = arg0.getY();
+						
+						mousePanel.setPontoAX(pontoAX);
+						mousePanel.setPontoAY(pontoAY);
+						mousePanel.setPontoBX(pontoBX);
+						mousePanel.setPontoBY(pontoBY);
+						mousePanel.setPontoCX(pontoCX);
+						mousePanel.setPontoCY(pontoCY);
+											
+						mousePanel.repaint();
+						
+						message = String.format("Ponto A: [%d; %d]", arg0.getX(), arg0.getY());
+						status.setText(message);
 						
 						cliquesTriangulo = 2;
 					}
 					
-					if (cliquesTriangulo == 2){
+					else if (cliquesTriangulo == 2){
 						pontoBX = arg0.getX();
 						pontoBY = arg0.getY();
+						pontoCX = arg0.getX();
+						pontoCY = arg0.getY();
+						
+						mousePanel.setPontoAX(pontoAX);
+						mousePanel.setPontoAY(pontoAY);
+						mousePanel.setPontoBX(pontoBX);
+						mousePanel.setPontoBY(pontoBY);
+						mousePanel.setPontoCX(pontoCX);
+						mousePanel.setPontoCY(pontoCY);
+											
+						mousePanel.repaint();
+						
+						message = message + " - " + String.format("Ponto B: [%d; %d]", arg0.getX(), arg0.getY());
+						status.setText(message);
 						
 						cliquesTriangulo = 1;
 					}
 					
-					if (cliquesTriangulo == 1){
+					else if (cliquesTriangulo == 1){
 						pontoCX = arg0.getX();
 						pontoCY = arg0.getY();
-												
+						
+						message = message + " - " + String.format("Ponto C: [%d; %d]", arg0.getX(), arg0.getY());
+						status.setText(message);
+						
+						mousePanel.setPontoAX(pontoAX);
+						mousePanel.setPontoAY(pontoAY);
+						mousePanel.setPontoBX(pontoBX);
+						mousePanel.setPontoBY(pontoBY);
+						mousePanel.setPontoCX(pontoCX);
+						mousePanel.setPontoCY(pontoCY);
+											
+						mousePanel.repaint();
+						
 						cliquesTriangulo = 3;
 					}
 					
@@ -166,35 +212,31 @@ public class MouseFrame extends JFrame{
 			public void mousePressed(MouseEvent arg0) {
 				originX = arg0.getX();
 				originY = arg0.getY();
+				
+				mousePanel.setOriginX(originX);
+				mousePanel.setOriginY(originY);
 				origin = String.format("Origem: [%d; %d]", originX, originY);
 				
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				if (mousePanel.getOpcao() == 1 || mousePanel.getOpcao() == 2 || mousePanel.getOpcao() == 4 || mousePanel.getOpcao() == 5){
+				/*if (mousePanel.getOpcao() == 1 || mousePanel.getOpcao() == 2 ||  mousePanel.getOpcao() == 4 || mousePanel.getOpcao() == 5){
 					mousePanel.setOriginX(originX);
 					mousePanel.setOriginY(originY);
 					mousePanel.setRadiusX(radiusX);
 					mousePanel.setRadiusY(radiusY);
 					mousePanel.setRadius((int) Math.abs(r));
+					
+					mousePanel.repaint();	
 				}
-				
-				else if (mousePanel.getOpcao() == 6){
-					mousePanel.setPontoAX(pontoAX);
-					mousePanel.setPontoAY(pontoAY);
-					mousePanel.setPontoBX(pontoBX);
-					mousePanel.setPontoBY(pontoBY);
-					mousePanel.setPontoCX(pontoCX);
-					mousePanel.setPontoCY(pontoCY);
-				}
-				
-				mousePanel.repaint();					
+				*/								
 				
 			}
 			
 			
 		});
+		
 		mousePanel.addMouseMotionListener(new MouseMotionListener(){
 
 			@Override
@@ -213,6 +255,13 @@ public class MouseFrame extends JFrame{
 							
 					double circ = Math.PI * 2 * r;
 					
+					mousePanel.setRadiusX(radiusX);
+					mousePanel.setRadiusY(radiusY);
+					mousePanel.setRadius((int) Math.abs(r));
+					
+					mousePanel.repaint();
+					
+										
 					message = origin + " - " + String.format("Raio: [%d; %d][%.2f]", radiusX, radiusY, r)  + " - " + 
 							String.format("Area: [%.2f]", area) + " - " + String.format("Circunferencia: [%.2f]", circ);
 					
@@ -231,6 +280,11 @@ public class MouseFrame extends JFrame{
 					infX = Math.max(originX, radiusX);
 					infY = Math.max(originY, radiusY);
 					
+					mousePanel.setRadiusX(radiusX);
+					mousePanel.setRadiusY(radiusY);
+					
+					mousePanel.repaint();
+					
 					int area = (infX - supX) * (infY - supY);
 					
 					int perim = ((infX - supX) * 2) + ((infY - supY) * 2);  
@@ -243,6 +297,11 @@ public class MouseFrame extends JFrame{
 				if(mousePanel.getOpcao() == 4){
 					radiusX = arg0.getX();
 					radiusY = arg0.getY();
+					
+					mousePanel.setRadiusX(radiusX);
+					mousePanel.setRadiusY(radiusY);
+					
+					mousePanel.repaint();	
 					
 					message = origin + " - " + String.format("Fim: [%d; %d]", radiusX, radiusY);
 					
@@ -260,6 +319,11 @@ public class MouseFrame extends JFrame{
 					supY = Math.min(originY, radiusY);
 					infX = Math.max(originX, radiusX);
 					infY = Math.max(originY, radiusY);
+					
+					mousePanel.setRadiusX(radiusX);
+					mousePanel.setRadiusY(radiusY);
+					
+					mousePanel.repaint();
 					
 					int area = (infX - supX) * (infY - supY);
 					
@@ -343,7 +407,6 @@ public class MouseFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				mousePanel.setOpcao(6);
-				cliquesTriangulo = 3;
 			}
 			
 			
@@ -351,6 +414,7 @@ public class MouseFrame extends JFrame{
 		
 		setVisible(true);
 	}
+	
 	
 }
 
@@ -362,178 +426,127 @@ class Painel extends JPanel {
 	private int pontoAX, pontoAY, pontoBX, pontoBY, pontoCX, pontoCY;
 	private int opcao;
 	
+	/* Getters and Setters */
+	
 	public int getPontoAX() {
 		return pontoAX;
 	}
-
-
 
 	public void setPontoAX(int pontoAX) {
 		this.pontoAX = pontoAX;
 	}
 
-
-
 	public int getPontoAY() {
 		return pontoAY;
 	}
-
-
 
 	public void setPontoAY(int pontoAY) {
 		this.pontoAY = pontoAY;
 	}
 
-
-
 	public int getPontoBX() {
 		return pontoBX;
 	}
-
-
 
 	public void setPontoBX(int pontoBX) {
 		this.pontoBX = pontoBX;
 	}
 
-
-
 	public int getPontoBY() {
 		return pontoBY;
 	}
-
-
 
 	public void setPontoBY(int pontoBY) {
 		this.pontoBY = pontoBY;
 	}
 
-
-
 	public int getPontoCX() {
 		return pontoCX;
 	}
-
-
 
 	public void setPontoCX(int pontoCX) {
 		this.pontoCX = pontoCX;
 	}
 
-
-
 	public int getPontoCY() {
 		return pontoCY;
 	}
-
-
 
 	public void setPontoCY(int pontoCY) {
 		this.pontoCY = pontoCY;
 	}
 	
-	
 	public int getOpcao() {
 		return opcao;
 	}
-
-
 
 	public void setOpcao(int opcao) {
 		this.opcao = opcao;
 	}
 
-	
 	public void setPoint(int pointX, int pointY){
 		this.pointX = pointX;
 		this.pointY = pointY;
 	}
-	
 
 	public int getPointX() {
 		return pointX;
 	}
 
-
-
 	public void setPointX(int pointX) {
 		this.pointX = pointX;
 	}
-
-
 
 	public int getPointY() {
 		return pointY;
 	}
 
-
-
 	public void setPointY(int pointY) {
 		this.pointY = pointY;
 	}
-
-
 
 	public int getOriginX() {
 		return originX;
 	}
 
-
-
 	public void setOriginX(int originX) {
 		this.originX = originX;
 	}
-
-
 
 	public int getOriginY() {
 		return originY;
 	}
 
-
-
 	public void setOriginY(int originY) {
 		this.originY = originY;
 	}
-
-
 
 	public int getRadiusX() {
 		return radiusX;
 	}
 
-
-
 	public void setRadiusX(int radiusX) {
 		this.radiusX = radiusX;
 	}
-
-
 
 	public int getRadiusY() {
 		return radiusY;
 	}
 
-
-
 	public void setRadiusY(int radiusY) {
 		this.radiusY = radiusY;
 	}
-
-	
 
 	public int getRadius() {
 		return radius;
 	}
 
-
-
 	public void setRadius(int radius) {
 		this.radius = radius;
 	}
 
-
-
+	/* Método paint */
+	
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		
