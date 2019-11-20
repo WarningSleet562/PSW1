@@ -1,4 +1,4 @@
-package br.udc.edu.Fila;
+package br.edu.udc.Fila;
 
 import br.edu.udc7_1.Ponto2D;
 
