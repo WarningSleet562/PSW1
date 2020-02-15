@@ -26,14 +26,14 @@ public class ListaFiguras extends JFrame{
 	private String message;
 	private String origin;
 	private double r;
-	private int originX, originY;
+	private double originX, originY;
 	private int radiusX, radiusY;
 	private int pontoAX, pontoAY, pontoBX, pontoBY, pontoCX, pontoCY;
 	private int cliquesTriangulo = 3;
 	
 	/* Getters and Setters */
 	
-	public int getOriginX() {
+	public double getOriginX() {
 		return originX;
 	}
 
@@ -41,7 +41,7 @@ public class ListaFiguras extends JFrame{
 		this.originX = originX;
 	}
 
-	public int getOriginY() {
+	public double getOriginY() {
 		return originY;
 	}
 
@@ -190,8 +190,8 @@ public class ListaFiguras extends JFrame{
 					radiusX = arg0.getX();
 					radiusY = arg0.getY();
 					
-					int x = Math.abs(originX - radiusX);
-					int y = Math.abs(originY - radiusY);
+					double x = Math.abs(originX - radiusX);
+					double y = Math.abs(originY - radiusY);
 					
 					r = Math.sqrt((x*x) + (y*y));
 			
@@ -216,7 +216,10 @@ public class ListaFiguras extends JFrame{
 					radiusX = arg0.getX();
 					radiusY = arg0.getY();
 					
-					int supX, supY, infX, infY;
+					double supX;
+					double infY;
+					double infX;
+					double supY;
 					
 					supX = Math.min(originX, radiusX);
 					supY = Math.min(originY, radiusY);
@@ -228,9 +231,9 @@ public class ListaFiguras extends JFrame{
 					
 					//mousePanel.repaint();
 					
-					int area = (infX - supX) * (infY - supY);
+					double area = (infX - supX) * (infY - supY);
 					
-					int perim = ((infX - supX) * 2) + ((infY - supY) * 2);  
+					double perim = ((infX - supX) * 2) + ((infY - supY) * 2);  
 				
 					message = String.format("Pontos: Sup Esq: [%d; %d] / Inf Dir: [%d; %d]", supX, supY, infX, infY) + " - " +
 							String.format("Area: [%d]", area) + " - " + String.format("Perimetro: [%d]", perim);
@@ -256,7 +259,10 @@ public class ListaFiguras extends JFrame{
 					radiusX = arg0.getX();
 					radiusY = arg0.getY();
 					
-					int supX, supY, infX, infY;
+					double supX;
+					double supY;
+					double infY;
+					double infX;
 					
 					supX = Math.min(originX, radiusX);
 					supY = Math.min(originY, radiusY);
@@ -268,9 +274,9 @@ public class ListaFiguras extends JFrame{
 					
 					//mousePanel.repaint();
 					
-					int area = (infX - supX) * (infY - supY);
+					double area = (infX - supX) * (infY - supY);
 					
-					int perim = ((infX - supX) * 2) + ((infY - supY) * 2);  
+					double perim = ((infX - supX) * 2) + ((infY - supY) * 2);  
 				
 					message = String.format("Pontos: Sup Esq: [%d; %d] / Inf Dir: [%d; %d]", supX, supY, infX, infY) + " - " +
 							String.format("Area: [%d]", area) + " - " + String.format("Perimetro: [%d]", perim);
@@ -391,7 +397,11 @@ class Painel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private int pointX, pointY;
-	private int originX, originY, radiusX, radiusY, radius;
+	double originX;
+
+	double originY;
+
+	private int radiusX, radiusY, radius;
 	private int pontoAX, pontoAY, pontoBX, pontoBY, pontoCX, pontoCY;
 	private int opcao;
 	
@@ -481,20 +491,20 @@ class Painel extends JPanel {
 		this.pointY = pointY;
 	}
 
-	public int getOriginX() {
+	public double getOriginX() {
 		return originX;
 	}
 
-	public void setOriginX(int originX) {
-		this.originX = originX;
+	public void setOriginX(double originX2) {
+		this.originX = originX2;
 	}
 
-	public int getOriginY() {
+	public double getOriginY() {
 		return originY;
 	}
 
-	public void setOriginY(int originY) {
-		this.originY = originY;
+	public void setOriginY(double originY2) {
+		this.originY = originY2;
 	}
 
 	public int getRadiusX() {
@@ -532,8 +542,8 @@ class Painel extends JPanel {
 		switch(opcao){
 			/* Círculo */
 			case 1:{
-				int x = originX - radius;
-				int y = originY - radius;
+				double x = originX - radius;
+				double y = originY - radius;
 				
 				f.inserir(new Figura(new Ponto2D(x, y), new Ponto2D(radius*2, radius*2), 1), 500);
 				break;
