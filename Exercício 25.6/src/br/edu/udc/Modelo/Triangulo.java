@@ -64,8 +64,8 @@ public class Triangulo implements FormaGeometrica{
 
 	@Override
 	public double perimetro() {
-		 //return new Ponto2D((a.getX() + b.getX() + c.getX()), (a.getY() + b.getY() + c.getY());
-		return 0;
+		 // return new Ponto2D ((a.getX() + b.getX() + c.getX()), (a.getY() + b.getY() + c.getY()));
+		 return 0;
 	}
 
 	@Override
